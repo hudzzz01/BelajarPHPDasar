@@ -52,7 +52,7 @@ function ubah($data)
 
 	$query = "UPDATE mahasiswa SET 
 	nama = '$nama'
-	WHERE mahasiswa.nim = '$nim'" ;
+	WHERE nim = '$nim'" ;
 
 
 

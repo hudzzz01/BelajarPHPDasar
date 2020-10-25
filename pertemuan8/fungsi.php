@@ -6,6 +6,7 @@ function query($query){
 	global $conn;
 
 	$result = mysqli_query($conn,$query);
+
 	$rows = [];
 	while ($row = mysqli_fetch_assoc($result)) {
 		$rows [] = $row;
@@ -26,6 +27,7 @@ function tambah($data)
 
 	$result = mysqli_query($conn,$query);
 
+
 	return mysqli_affected_rows($conn);
 
 }
@@ -45,14 +47,31 @@ function ubah($data)
 	global $conn;
 
 	$nim = (int)$data['nim'];
+	var_dump($nim);
+
+
+
+
 	$nama = htmlspecialchars($data['nama']);
 	$jurusan = htmlspecialchars($data['jurusan']);
 	$email = htmlspecialchars($data['email']);
 	$foto = htmlspecialchars($data['foto']);
 
 	$query = "UPDATE mahasiswa SET 
-	nama = '$nama'
-	WHERE mahasiswa.nim = '$nim'" ;
+	nama = '$nama',
+	jurursan = '$jurusan',
+	email = '$email',
+	foto = '$foto'
+	WHERE nim = $nim
+	";
+
+	$result = mysqli_query($conn,$query);
+	
+
+
+	return mysqli_affected_rows($conn);
+
+
 
 
 
